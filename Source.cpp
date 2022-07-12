@@ -113,12 +113,12 @@ typedef struct {
 
 void Show_slot(Slot slot) {
 	for (auto it = slot.slot.begin(); it != slot.slot.end(); ++it) {
-		cout << "{ " << it->first << ": "; // имя слота
-		auto dat = it->second; // данные слота
+		cout << "{ " << it->first << ": "; // РёРјСЏ СЃР»РѕС‚Р°
+		auto dat = it->second; // РґР°РЅРЅС‹Рµ СЃР»РѕС‚Р°
 
 		for (auto ite = dat.integer.begin(); ite != dat.integer.end(); ++ite) {
-			cout << "[ " << ite->first << ": "; // имя атрибута
-			auto data = ite->second; // данные атрибута
+			cout << "[ " << ite->first << ": "; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+			auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚Р°
 			for (auto iter = data.begin(); iter != data.end(); ++iter) {
 				cout << *iter << "; ";
 			}
@@ -126,8 +126,8 @@ void Show_slot(Slot slot) {
 		}
 
 		for (auto ite = dat.str.begin(); ite != dat.str.end(); ++ite) {
-			cout << "[ " << ite->first << ": "; // имя атрибута
-			auto data = ite->second; // данные атрибута
+			cout << "[ " << ite->first << ": "; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+			auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚Р°
 			for (auto iter = data.begin(); iter != data.end(); ++iter) {
 				cout << *iter << "; ";
 			}
@@ -135,8 +135,8 @@ void Show_slot(Slot slot) {
 		}
 
 		for (auto ite = dat.doub.begin(); ite != dat.doub.end(); ++ite) {
-			cout << "[ " << ite->first << ": "; // имя атрибута
-			auto data = ite->second; // данные атрибута
+			cout << "[ " << ite->first << ": "; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+			auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚Р°
 			for (auto iter = data.begin(); iter != data.end(); ++iter) {
 				cout << *iter << "; ";
 			}
@@ -148,8 +148,8 @@ void Show_slot(Slot slot) {
 		}
 
 		for (auto ite = dat.link.begin(); ite != dat.link.end(); ++ite) {
-			cout << "[ " << ite->first << ": "; // имя атрибута
-			auto data = ite->second; // данные атрибута
+			cout << "[ " << ite->first << ": "; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+			auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚Р°
 			for (auto iter = data.begin(); iter != data.end(); ++iter) {
 				cout << *iter << "; ";
 			}
@@ -160,16 +160,16 @@ void Show_slot(Slot slot) {
 }
 
 void show_one_frame(Model model, string frame_name, int num) {
-	if (num == -1) { // экземпляры
+	if (num == -1) { // СЌРєР·РµРјРїР»СЏСЂС‹
 		auto i = model.frame.find(frame_name);
-		cout << i->first << ": " << "( "; // имя фрейма
-		auto da = i->second; // данные фрейма
+		cout << i->first << ": " << "( "; // РёРјСЏ С„СЂРµР№РјР°
+		auto da = i->second; // РґР°РЅРЅС‹Рµ С„СЂРµР№РјР°
 		Show_slot(da);
 		cout << " )\n";
 	}
-	else if (num >= 0) { // прототипы
+	else if (num >= 0) { // РїСЂРѕС‚РѕС‚РёРїС‹
 		auto i = model.proto[num];
-		cout << num+1 << ": " << "( "; // номер фрейма
+		cout << num+1 << ": " << "( "; // РЅРѕРјРµСЂ С„СЂРµР№РјР°
 		Show_slot(i);
 		cout << " )\n";
 	}
@@ -182,10 +182,10 @@ void add_frame(Model* model) {
 	bool find, end;
 	do {
 		end = false;
-		cout << "1) Добавить пустой фрейм\n";
-		cout << "2) Добавить фрейм по прототипу\n";
-		cout << "3) Добавить прототип фрейма\n";
-		cout << "Введите команду: ";
+		cout << "1) Р”РѕР±Р°РІРёС‚СЊ РїСѓСЃС‚РѕР№ С„СЂРµР№Рј\n";
+		cout << "2) Р”РѕР±Р°РІРёС‚СЊ С„СЂРµР№Рј РїРѕ РїСЂРѕС‚РѕС‚РёРїСѓ\n";
+		cout << "3) Р”РѕР±Р°РІРёС‚СЊ РїСЂРѕС‚РѕС‚РёРї С„СЂРµР№РјР°\n";
+		cout << "Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ";
 		cin >> _int;
 		cin.get();
 	} while (_int <=0 || _int >= 4);
@@ -193,29 +193,29 @@ void add_frame(Model* model) {
 	if (_int == 1) {
 		do {
 			find = false;
-			cout << "Введите имя фрейма для добавления: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();
 			auto it = model->frame.find(name);
 			if (it != model->frame.end()) {
-				cout << "Фрейм с таким именем уже существует, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
-		cout << "Фрейм добавлен\n\n";
+		cout << "Р¤СЂРµР№Рј РґРѕР±Р°РІР»РµРЅ\n\n";
 		model->frame.emplace(piecewise_construct, make_tuple(name), make_tuple());
 	}
 
 	else if(_int == 2) {
 		cout << "\n";
-		for (auto it = model->proto.begin(); it != model->proto.end(); ++it) { // вывод фреймов прототипов
+		for (auto it = model->proto.begin(); it != model->proto.end(); ++it) { // РІС‹РІРѕРґ С„СЂРµР№РјРѕРІ РїСЂРѕС‚РѕС‚РёРїРѕРІ
 			show_one_frame(*model, "", it->first);
 		}
 		cout << "\n";
 
 		do {
-			cout << "Введите номер фрейма прототипа: ";
+			cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С„СЂРµР№РјР° РїСЂРѕС‚РѕС‚РёРїР°: ";
 			cin >> tmp;
 			cin.get();
 			cin.clear();
@@ -225,13 +225,13 @@ void add_frame(Model* model) {
 
 		do {
 			find = false;
-			cout << "Введите имя фрейма для добавления: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();
 			auto it = model->frame.find(name);
 			if (it != model->frame.end()) {
-				cout << "Фрейм с таким именем уже существует, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
@@ -245,7 +245,7 @@ void add_frame(Model* model) {
 		string name1, name2;
 
 		do {
-			cout << "Введите количество слотов: ";
+			cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ: ";
 			cin >> slot_count;
 			cin.get();
 			cin.clear();
@@ -253,29 +253,29 @@ void add_frame(Model* model) {
 		} while (slot_count <= 0);
 
 		for (auto i = 0; i < slot_count; i++) {
-			cout << "Введите имя слота №" << i+1 << ": ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ СЃР»РѕС‚Р° в„–" << i+1 << ": ";
 			cin >> name1;
 			cin.clear();
 			cin.sync();
-			cout << "Введите количество атрибутов в слоте №" << i + 1 << ": ";
+			cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ РІ СЃР»РѕС‚Рµ в„–" << i + 1 << ": ";
 			cin >> atr_count;
 			cin.get();
 			cin.clear();
 			cin.sync();
 
 			for (auto j = 0; j < atr_count; j++) {
-				cout << "Введите имя атрибута №" << j+1 << ": ";
+				cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р° в„–" << j+1 << ": ";
 				cin >> name2;
 				cin.clear();
 				cin.sync();
 				do {
-					cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+					cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 					cin >> tmp;
 					cin.get();
 					cin.clear();
 					cin.sync();
 					if (tmp <= 0 || tmp >= 6)
-						cout << "Введено неверное значение, повторите попытку\n";
+						cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 				} while (tmp <= 0 || tmp >= 6);
 				
 				switch (tmp) {
@@ -317,21 +317,21 @@ void delete_frame(Model* model) {
 	if (model->frame.size() > 0) {
 		do {
 			find = false;
-			cout << "Введите имя фрейма для удаления: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();
 			auto it = model->frame.find(name);
 			if (it == model->frame.end()) {
-				cout << "Фрейм с таким именем не найден, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
-		cout << "Фрейм удален\n\n";
+		cout << "Р¤СЂРµР№Рј СѓРґР°Р»РµРЅ\n\n";
 		model->frame.erase(name);
 	}
 	else
-		cout << "В базе знаний нет фреймов\n\n";
+		cout << "Р’ Р±Р°Р·Рµ Р·РЅР°РЅРёР№ РЅРµС‚ С„СЂРµР№РјРѕРІ\n\n";
 }
 
 void edit_frame(Model* model) {
@@ -341,24 +341,24 @@ void edit_frame(Model* model) {
 	if (model->frame.size() > 0) {
 		do {
 			find = false;
-			cout << "Введите имя фрейма для редактирования: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР° РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ: ";
 			cin >> name1;
 			cin.clear();
 			cin.sync();			auto it = model->frame.find(name1);
 			if (it == model->frame.end()) {
-				cout << "Фрейм с таким именем не найден, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
 
 		do {
 			find = false;
-			cout << "Введите новое фрейма: ";
+			cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ С„СЂРµР№РјР°: ";
 			cin >> name2;
 			cin.clear();
 			cin.sync();			auto it = model->frame.find(name2);
 			if (it != model->frame.end()) {
-				cout << "Фрейм с таким именем уже существует, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
@@ -367,10 +367,10 @@ void edit_frame(Model* model) {
 		model->frame.erase(name1);
 		model->frame.emplace(name2, data);
 
-		cout << "Фрейм изменен\n\n";
+		cout << "Р¤СЂРµР№Рј РёР·РјРµРЅРµРЅ\n\n";
 	}
 	else
-		cout << "В базе знаний нет фреймов\n\n";
+		cout << "Р’ Р±Р°Р·Рµ Р·РЅР°РЅРёР№ РЅРµС‚ С„СЂРµР№РјРѕРІ\n\n";
 }
 
 void add_slot(Model* model) {
@@ -388,41 +388,41 @@ void add_slot(Model* model) {
 	if (model->frame.size() > 0) {
 		do {
 			find = false;
-			cout << "Введите имя фрейма: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР°: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();
 			auto it = model->frame.find(name);
 			if (it == model->frame.end()) {
-				cout << "Фрейм с таким именем не найден, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				find = true;
 			}
 		} while (find == true);
 
-		cout << "Введите имя слота: ";
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ СЃР»РѕС‚Р°: ";
 		cin >> slot;
 		cin.clear();
 		cin.sync();
 
-		cout << "Введите имя атрибута: ";
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 		cin >> atr;
 		cin.clear();
 		cin.sync();
 
 		do {
 			end = false;
-			cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+			cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 			cin >> type;
 			cin.get();
 			cin.clear();
 			cin.sync();			if (type >= 1 && type <= 4)
 				end = true;
 			else {
-				cout << "Введен неверный номер типа, повторите ввод\n";
+				cout << "Р’РІРµРґРµРЅ РЅРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ С‚РёРїР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 			}
 		} while (end == false);
 
-		cout << "Введите значение атрибута: ";
+		cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р°: ";
 
 		switch (type) {
 
@@ -432,10 +432,10 @@ void add_slot(Model* model) {
 			cin.clear();
 			cin.sync();
 			cout << "\n";
-			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // если слот не существует
+			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // РµСЃР»Рё СЃР»РѕС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(slot), make_tuple());
 			}
-			if (model->frame[name].slot[slot].integer.find(atr) == model->frame[name].slot[slot].integer.end()) // если не найден атрибут
+			if (model->frame[name].slot[slot].integer.find(atr) == model->frame[name].slot[slot].integer.end()) // РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ Р°С‚СЂРёР±СѓС‚
 				model->frame[name].slot[slot].integer.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 			model->frame[name].slot[slot].integer[atr].push_back(i);
 			break;
@@ -444,10 +444,10 @@ void add_slot(Model* model) {
 			cin >> s;
 			cin.clear();
 			cin.sync();			cout << "\n";
-			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // если слот не существует
+			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // РµСЃР»Рё СЃР»РѕС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(slot), make_tuple());
 			}
-			if (model->frame[name].slot[slot].str.find(atr) == model->frame[name].slot[slot].str.end()) // если не найден атрибут
+			if (model->frame[name].slot[slot].str.find(atr) == model->frame[name].slot[slot].str.end()) // РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ Р°С‚СЂРёР±СѓС‚
 				model->frame[name].slot[slot].str.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 			model->frame[name].slot[slot].str[atr].push_back(s);
 			break;
@@ -457,10 +457,10 @@ void add_slot(Model* model) {
 			cin.get();
 			cin.clear();
 			cin.sync();			cout << "\n";
-			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // если слот не существует
+			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // РµСЃР»Рё СЃР»РѕС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(slot), make_tuple());
 			}
-			if (model->frame[name].slot[slot].doub.find(atr) == model->frame[name].slot[slot].doub.end()) // если не найден атрибут
+			if (model->frame[name].slot[slot].doub.find(atr) == model->frame[name].slot[slot].doub.end()) // РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ Р°С‚СЂРёР±СѓС‚
 				model->frame[name].slot[slot].doub.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 			model->frame[name].slot[slot].doub[atr].push_back(d);
 			break;
@@ -472,17 +472,17 @@ void add_slot(Model* model) {
 				cin.get();
 				cin.clear();
 				cin.sync();				if (i < 0 || i > 1)
-					cout << "Введено неверное значение, повторите попытку\n";
+					cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 			} while (i < 0 || i > 1);
 			if (i == 0)
 				b = false;
 			else
 				b = true;
 			cout << "\n";
-			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // если слот не существует
+			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // РµСЃР»Рё СЃР»РѕС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(slot), make_tuple());
 			}
-			if (model->frame[name].slot[slot].boo.find(atr) == model->frame[name].slot[slot].boo.end()) // если не найден атрибут
+			if (model->frame[name].slot[slot].boo.find(atr) == model->frame[name].slot[slot].boo.end()) // РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ Р°С‚СЂРёР±СѓС‚
 				model->frame[name].slot[slot].boo.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 			model->frame[name].slot[slot].boo[atr] = b;
 			break;
@@ -491,17 +491,17 @@ void add_slot(Model* model) {
 			cin >> link;
 			cin.clear();
 			cin.sync();			cout << "\n";
-			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // если слот не существует
+			if (model->frame[name].slot.find(slot) == model->frame[name].slot.end()) { // РµСЃР»Рё СЃР»РѕС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(slot), make_tuple());
 			}
-			if (model->frame[name].slot[slot].link.find(atr) == model->frame[name].slot[slot].link.end()) // если не найден атрибут
+			if (model->frame[name].slot[slot].link.find(atr) == model->frame[name].slot[slot].link.end()) // РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ Р°С‚СЂРёР±СѓС‚
 				model->frame[name].slot[slot].link.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 			model->frame[name].slot[slot].link[atr].push_back(link);
 			break;
 		}
 	}
-	else // нет фреймов
-		cout << "В базе знаний нет фреймов\n\n";
+	else // РЅРµС‚ С„СЂРµР№РјРѕРІ
+		cout << "Р’ Р±Р°Р·Рµ Р·РЅР°РЅРёР№ РЅРµС‚ С„СЂРµР№РјРѕРІ\n\n";
 }
 
 void delete_slot(Model* model) {
@@ -522,154 +522,154 @@ void delete_slot(Model* model) {
 	if (model->frame.size() > 0) {
 		do {
 			end = false;
-			cout << "Введите имя фрейма: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР°: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();			auto it = model->frame.find(name);
 			if (it == model->frame.end()) {
-				cout << "Фрейм с таким именем не найден, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				end = true;
 			}
 		} while (end == true);
 
-		cout << "Введите имя слота: ";
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ СЃР»РѕС‚Р°: ";
 		cin >> slot;
 		cin.clear();
 		cin.sync();
 		do {
 			end = false;
-			cout << "1) Удалить слот\n";
-			cout << "2) Удалить атрибут\n";
-			cout << "3) Удалить значение атрибута\n";
-			cout << "Номер команды: ";
+			cout << "1) РЈРґР°Р»РёС‚СЊ СЃР»РѕС‚\n";
+			cout << "2) РЈРґР°Р»РёС‚СЊ Р°С‚СЂРёР±СѓС‚\n";
+			cout << "3) РЈРґР°Р»РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р°\n";
+			cout << "РќРѕРјРµСЂ РєРѕРјР°РЅРґС‹: ";
 			cin >> cmd;
 			cin.get();
 			cin.clear();
 			cin.sync();			if (cmd <= 0 || cmd >= 4)
-				cout << "Введена неверная команда, повторите ввод\n";
+				cout << "Р’РІРµРґРµРЅР° РЅРµРІРµСЂРЅР°СЏ РєРѕРјР°РЅРґР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 			else
 				end = true;
 		} while (end == false);
 
 		switch (cmd) {
 
-		case 1: // удаление слота
-			if (model->frame[name].slot.find(slot) != model->frame[name].slot.end()) // если нашло
+		case 1: // СѓРґР°Р»РµРЅРёРµ СЃР»РѕС‚Р°
+			if (model->frame[name].slot.find(slot) != model->frame[name].slot.end()) // РµСЃР»Рё РЅР°С€Р»Рѕ
 				model->frame[name].slot.erase(slot);
 			else
-				cout << "Фрейма с таким слотом не найдено\n\n";
+				cout << "Р¤СЂРµР№РјР° СЃ С‚Р°РєРёРј СЃР»РѕС‚РѕРј РЅРµ РЅР°Р№РґРµРЅРѕ\n\n";
 			break;
 
-		case 2: // удаление атрибута
-			cout << "Введите имя атрибута: ";
+		case 2: // СѓРґР°Р»РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р°
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> atr;
 			cin.clear();
-			cin.sync();			cout << "Введите тип значения атрибута: ";
+			cin.sync();			cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 
 			do {
 				end = false;
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 				cin >> type;
 				cin.get();
 				cin.clear();
 				cin.sync();				if (type >= 1 && type <= 4)
 					end = true;
 				else {
-					cout << "Введен неверный номер типа, повторите ввод\n";
+					cout << "Р’РІРµРґРµРЅ РЅРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ С‚РёРїР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				}
 			} while (end == false);
 
 			switch (type) {
 
 			case 1:
-				if (model->frame[name].slot[slot].integer.find(atr) != model->frame[name].slot[slot].integer.end()) // если найдено
+				if (model->frame[name].slot[slot].integer.find(atr) != model->frame[name].slot[slot].integer.end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].integer.erase(atr);
 				else
-					cout << "Не найдено фрейма с введенным слотом и именем атрибута\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р°\n\n";
 				break;
 
 			case 2:
-				if (model->frame[name].slot[slot].str.find(atr) != model->frame[name].slot[slot].str.end()) // если найдено
+				if (model->frame[name].slot[slot].str.find(atr) != model->frame[name].slot[slot].str.end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].str.erase(atr);
 				else
-					cout << "Не найдено фрейма с введенным слотом и именем атрибута\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р°\n\n";
 				break;
 
 			case 3:
-				if (model->frame[name].slot[slot].doub.find(atr) != model->frame[name].slot[slot].doub.end()) // если найдено
+				if (model->frame[name].slot[slot].doub.find(atr) != model->frame[name].slot[slot].doub.end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].doub.erase(atr);
 				else
-					cout << "Не найдено фрейма с введенным слотом и именем атрибута\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р°\n\n";
 				break;
 
 			case 4:
-				if (model->frame[name].slot[slot].boo.find(atr) != model->frame[name].slot[slot].boo.end()) // если найдено
+				if (model->frame[name].slot[slot].boo.find(atr) != model->frame[name].slot[slot].boo.end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].boo.erase(atr);
 				else
-					cout << "Не найдено фрейма с введенным слотом и именем атрибута\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р°\n\n";
 				break;
 
 			case 5:
-				if (model->frame[name].slot[slot].link.find(atr) != model->frame[name].slot[slot].link.end()) // если найдено
+				if (model->frame[name].slot[slot].link.find(atr) != model->frame[name].slot[slot].link.end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].link.erase(atr);
 				else
-					cout << "Не найдено фрейма с введенным слотом и именем атрибута\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р°\n\n";
 				break;
 			}
 			break;
 
-		case 3: // удаление значения атрибута
-			cout << "Введите имя атрибута: ";
+		case 3: // СѓРґР°Р»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р°
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> atr;
 
 			do {
 				end = false;
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 				cin >> type;
 				cin.get();
 				cin.clear();
 				cin.sync();				if (type >= 1 && type <= 4)
 					end = true;
 				else {
-					cout << "Введен неверный номер типа, повторите ввод\n";
+					cout << "Р’РІРµРґРµРЅ РЅРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ С‚РёРїР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				}
 			} while (end == false);
 
 			switch (type) {
 
 			case 1:
-				cout << "Введите значение атрибута int: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° int: ";
 				cin >> i;
 				cin.get();
 				cin.clear();
 				cin.sync();				in = find(model->frame[name].slot[slot].integer[atr].begin(), model->frame[name].slot[slot].integer[atr].end(), i);
-				if (in != model->frame[name].slot[slot].integer[atr].end()) // если найдено
+				if (in != model->frame[name].slot[slot].integer[atr].end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].integer[atr].erase(in);
 				else
-					cout << "Не найдено фрейма с введенным слота, именем атрибута и значением\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚Р°, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј\n\n";
 				break;
 
 			case 2:
-				cout << "Введите значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> s;
 				cin.clear();
 				cin.sync();				st = find(model->frame[name].slot[slot].str[atr].begin(), model->frame[name].slot[slot].str[atr].end(), s);
-				if (st != model->frame[name].slot[slot].str[atr].end()) // если найдено
+				if (st != model->frame[name].slot[slot].str[atr].end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].str[atr].erase(st);
 				else
-					cout << "Не найдено фрейма с введенным слота, именем атрибута и значением\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚Р°, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј\n\n";
 				break;
 
 			case 3:
-				cout << "Введите значение атрибута double: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° double: ";
 				cin >> d;
 				cin.get();
 				cin.clear();
 				cin.sync();				dob = find(model->frame[name].slot[slot].doub[atr].begin(), model->frame[name].slot[slot].doub[atr].end(), d);
-				if (dob != model->frame[name].slot[slot].doub[atr].end()) // если найдено
+				if (dob != model->frame[name].slot[slot].doub[atr].end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].doub[atr].erase(dob);
 				else
-					cout << "Не найдено фрейма с введенным слота, именем атрибута и значением\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚Р°, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј\n\n";
 				break;
 
 			case 4:
@@ -679,7 +679,7 @@ void delete_slot(Model* model) {
 					cin.get();
 					cin.clear();
 					cin.sync();					if (i < 0 || i > 1)
-						cout << "Введено неверное значение, повторите попытку\n\n";
+						cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n\n";
 				} while (i < 0 || i > 1);
 				if (i == 0)
 					b = false;
@@ -687,31 +687,31 @@ void delete_slot(Model* model) {
 					b = true;
 				cout << "\n";
 				bo = model->frame[name].slot[slot].boo.find(atr);
-				if (bo->second == b) { // если найдено
+				if (bo->second == b) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].boo.erase(atr);
 					model->frame[name].slot[slot].boo.emplace(piecewise_construct, make_tuple(atr), make_tuple());
 				}
 				else
-					cout << "Не найдено фрейма с введенным слота, именем атрибута и значением\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚Р°, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј\n\n";
 				break;
 
 			case 5:
-				cout << "Введите значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> link;
 				cin.clear();
 				cin.sync();
 				st = find(model->frame[name].slot[slot].link[atr].begin(), model->frame[name].slot[slot].link[atr].end(), s);
-				if (st != model->frame[name].slot[slot].link[atr].end()) // если найдено
+				if (st != model->frame[name].slot[slot].link[atr].end()) // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].link[atr].erase(st);
 				else
-					cout << "Не найдено фрейма с введенным слота, именем атрибута и значением\n\n";
+					cout << "РќРµ РЅР°Р№РґРµРЅРѕ С„СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚Р°, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј\n\n";
 				break;
 			}
 			break;
 		}
 	}
-	else // нет фреймов
-		cout << "В базе знаний нет фреймов\n\n";
+	else // РЅРµС‚ С„СЂРµР№РјРѕРІ
+		cout << "Р’ Р±Р°Р·Рµ Р·РЅР°РЅРёР№ РЅРµС‚ С„СЂРµР№РјРѕРІ\n\n";
 }
 
 void edit_slot(Model* model) {
@@ -738,62 +738,62 @@ void edit_slot(Model* model) {
 	if (model->frame.size() > 0) {
 		do {
 			end = false;
-			cout << "Введите имя фрейма: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„СЂРµР№РјР°: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();			auto it = model->frame.find(name);
 			if (it == model->frame.end()) {
-				cout << "Фрейм с таким именем не найден, повторите ввод\n";
+				cout << "Р¤СЂРµР№Рј СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				end = true;
 			}
 		} while (end == true);
 
-		cout << "Введите имя слота: ";
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ СЃР»РѕС‚Р°: ";
 		cin >> slot;
 		cin.clear();
 		cin.sync();
 
 		do {
 			end = false;
-			cout << "1) Изменить имя слота\n";
-			cout << "2) Изменить имя атрибута\n";
-			cout << "3) Изменить значение атрибута\n";
-			cout << "Номер команды: ";
+			cout << "1) РР·РјРµРЅРёС‚СЊ РёРјСЏ СЃР»РѕС‚Р°\n";
+			cout << "2) РР·РјРµРЅРёС‚СЊ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°\n";
+			cout << "3) РР·РјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р°\n";
+			cout << "РќРѕРјРµСЂ РєРѕРјР°РЅРґС‹: ";
 			cin >> cmd;
 			cin.get();
 			cin.clear();
 			cin.sync();
 			if (cmd <= 0 || cmd >= 4)
-				cout << "Введена неверная команда, повторите ввод\n";
+				cout << "Р’РІРµРґРµРЅР° РЅРµРІРµСЂРЅР°СЏ РєРѕРјР°РЅРґР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 			else
 				end = true;
 		} while (end == false);
 
 		switch (cmd) {
 
-		case 1: // изменение имени слота
-			cout << "Введите новое имя слота:";
+		case 1: // РёР·РјРµРЅРµРЅРёРµ РёРјРµРЅРё СЃР»РѕС‚Р°
+			cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РёРјСЏ СЃР»РѕС‚Р°:";
 			cin >> new_slot_name;
 			cin.clear();
 			cin.sync();
 			iter = model->frame[name].slot.find(slot);
-			if (iter != model->frame[name].slot.end()) { // если нашло
+			if (iter != model->frame[name].slot.end()) { // РµСЃР»Рё РЅР°С€Р»Рѕ
 				model->frame[name].slot.erase(slot);
 				model->frame[name].slot.emplace(piecewise_construct, make_tuple(new_slot_name), make_tuple(iter->second));
 			}
 			else
-				cout << "Фрейма с таким слотом не найдено\n\n";
+				cout << "Р¤СЂРµР№РјР° СЃ С‚Р°РєРёРј СЃР»РѕС‚РѕРј РЅРµ РЅР°Р№РґРµРЅРѕ\n\n";
 			break;
 
-		case 2: // изменение имени атрибута
-			cout << "Введите имя атрибута: ";
+		case 2: // РёР·РјРµРЅРµРЅРёРµ РёРјРµРЅРё Р°С‚СЂРёР±СѓС‚Р°
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> atr;
 			cin.clear();
 			cin.sync();
 
 			do {
 				end = false;
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 				cin >> type;
 				cin.get();
 				cin.clear();
@@ -801,11 +801,11 @@ void edit_slot(Model* model) {
 				if (type >= 1 && type <= 4)
 					end = true;
 				else {
-					cout << "Введен неверный номер типа, повторите ввод\n";
+					cout << "Р’РІРµРґРµРЅ РЅРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ С‚РёРїР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				}
 			} while (end == false);
 
-			cout << "Введите новое имя атрибута: ";
+			cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> new_atr_name;
 			cin.clear();
 			cin.sync();
@@ -814,8 +814,8 @@ void edit_slot(Model* model) {
 
 			case 1:
 				it_i = model->frame[name].slot[slot].integer.find(atr);
-				if (it_i != model->frame[name].slot[slot].integer.end()) { // если найдено
-					if (model->frame[name].slot[slot].integer.find(new_atr_name) == model->frame[name].slot[slot].integer.end()) // если не существует
+				if (it_i != model->frame[name].slot[slot].integer.end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
+					if (model->frame[name].slot[slot].integer.find(new_atr_name) == model->frame[name].slot[slot].integer.end()) // РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 						model->frame[name].slot[slot].integer.emplace(new_atr_name, it_i->second);
 					else {
 						for (auto z = it_i->second.begin(); z != it_i->second.end(); z++) {
@@ -826,13 +826,13 @@ void edit_slot(Model* model) {
 					model->frame[name].slot[slot].integer.erase(atr);
 				}
 				else
-					cout << "Фрейм с введенным слотом и именем атрибута не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 2:
 				it_s = model->frame[name].slot[slot].str.find(atr);
-				if (it_s != model->frame[name].slot[slot].str.end()) { // если найдено
-					if (model->frame[name].slot[slot].str.find(new_atr_name) == model->frame[name].slot[slot].str.end()) // если не существует
+				if (it_s != model->frame[name].slot[slot].str.end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
+					if (model->frame[name].slot[slot].str.find(new_atr_name) == model->frame[name].slot[slot].str.end()) // РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 						model->frame[name].slot[slot].str.emplace(new_atr_name, it_s->second);
 					else {
 						for (auto z = it_s->second.begin(); z != it_s->second.end(); z++) {
@@ -843,13 +843,13 @@ void edit_slot(Model* model) {
 					model->frame[name].slot[slot].str.erase(atr);
 				}
 				else
-					cout << "Фрейм с введенным слотом и именем атрибута не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 3:
 				it_d = model->frame[name].slot[slot].doub.find(atr);
-				if (it_d != model->frame[name].slot[slot].doub.end()) { // если найдено
-					if (model->frame[name].slot[slot].doub.find(new_atr_name) == model->frame[name].slot[slot].doub.end()) // если не существует
+				if (it_d != model->frame[name].slot[slot].doub.end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
+					if (model->frame[name].slot[slot].doub.find(new_atr_name) == model->frame[name].slot[slot].doub.end()) // РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 						model->frame[name].slot[slot].doub.emplace(new_atr_name, it_d->second);
 					else {
 						for (auto z = it_d->second.begin(); z != it_d->second.end(); z++) {
@@ -860,13 +860,13 @@ void edit_slot(Model* model) {
 					model->frame[name].slot[slot].doub.erase(atr);
 				}
 				else
-					cout << "Фрейм с введенным слотом и именем атрибута не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 4:
 				bo = model->frame[name].slot[slot].boo.find(atr);
-				if (bo != model->frame[name].slot[slot].boo.end()) { // если найдено
-					if (model->frame[name].slot[slot].boo.find(new_atr_name) == model->frame[name].slot[slot].boo.end()) // если не существует
+				if (bo != model->frame[name].slot[slot].boo.end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
+					if (model->frame[name].slot[slot].boo.find(new_atr_name) == model->frame[name].slot[slot].boo.end()) // РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 						model->frame[name].slot[slot].boo.emplace(new_atr_name, bo->second);
 					else {
 						model->frame[name].slot[slot].boo[new_atr_name] = bo->second;
@@ -874,13 +874,13 @@ void edit_slot(Model* model) {
 					model->frame[name].slot[slot].boo.erase(atr);
 				}
 				else
-					cout << "Фрейма с введенным слотом и именем атрибута не найден\n\n";
+					cout << "Р¤СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 5:
 				it_s = model->frame[name].slot[slot].link.find(atr);
-				if (it_s != model->frame[name].slot[slot].link.end()) { // если найдено
-					if (model->frame[name].slot[slot].link.find(new_atr_name) == model->frame[name].slot[slot].link.end()) // если не существует
+				if (it_s != model->frame[name].slot[slot].link.end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
+					if (model->frame[name].slot[slot].link.find(new_atr_name) == model->frame[name].slot[slot].link.end()) // РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 						model->frame[name].slot[slot].link.emplace(new_atr_name, it_s->second);
 					else {
 						for (auto z = it_s->second.begin(); z != it_s->second.end(); z++) {
@@ -891,20 +891,20 @@ void edit_slot(Model* model) {
 					model->frame[name].slot[slot].link.erase(atr);
 				}
 				else
-					cout << "Фрейма с введенным слотом и именем атрибута не найден\n\n";
+					cout << "Р¤СЂРµР№РјР° СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј Рё РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 			}
 			break;
 
-		case 3: // изменение значения атрибута
-			cout << "Введите имя атрибута: ";
+		case 3: // РёР·РјРµРЅРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р°
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> atr;
 			cin.clear();
 			cin.sync();
 
 			do {
 				end = false;
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 				cin >> type;
 				cin.get();
 				cin.clear();
@@ -912,74 +912,74 @@ void edit_slot(Model* model) {
 				if (type >= 1 && type <= 4)
 					end = true;
 				else {
-					cout << "Введен неверный номер типа, повторите ввод\n";
+					cout << "Р’РІРµРґРµРЅ РЅРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ С‚РёРїР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 				}
 			} while (end == false);
 
 			switch (type) {
 
 			case 1:
-				cout << "Введите значение атрибута int: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° int: ";
 				cin >> i;
 				cin.get();
 				cin.clear();
 				cin.sync();
 
-				cout << "Введите новое значение атрибута int: ";
+				cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° int: ";
 				cin >> new_i;
 				cin.get();
 				cin.clear();
 				cin.sync();
 
 				in = find(model->frame[name].slot[slot].integer[atr].begin(), model->frame[name].slot[slot].integer[atr].end(), i);
-				if (in != model->frame[name].slot[slot].integer[atr].end()) { // если найдено
+				if (in != model->frame[name].slot[slot].integer[atr].end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].integer[atr].erase(in);
 					model->frame[name].slot[slot].integer[atr].push_back(new_i);
 				}
 				else
-					cout << "Фрейм с введенным слотом, именем атрибута и значением не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 2:
-				cout << "Введите значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> s;
 				cin.clear();
 				cin.sync();
 
-				cout << "Введите новое значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> new_s;
 				cin.clear();
 				cin.sync();
 
 				st = find(model->frame[name].slot[slot].str[atr].begin(), model->frame[name].slot[slot].str[atr].end(), s);
-				if (st != model->frame[name].slot[slot].str[atr].end()) { // если найдено
+				if (st != model->frame[name].slot[slot].str[atr].end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].str[atr].erase(st);
 					model->frame[name].slot[slot].str[atr].push_back(new_s);
 				}
 				else
-					cout << "Фрейм с введенным слотом, именем атрибута и значением не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 3:
-				cout << "Введите значение атрибута double: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° double: ";
 				cin >> d;
 				cin.get();
 				cin.clear();
 				cin.sync();
 
-				cout << "Введите новое значение атрибута double: ";
+				cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° double: ";
 				cin >> new_d;
 				cin.get();
 				cin.clear();
 				cin.sync();
 
 				dob = find(model->frame[name].slot[slot].doub[atr].begin(), model->frame[name].slot[slot].doub[atr].end(), d);
-				if (dob != model->frame[name].slot[slot].doub[atr].end()) {// если найдено
+				if (dob != model->frame[name].slot[slot].doub[atr].end()) {// РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].doub[atr].erase(dob);
 					model->frame[name].slot[slot].doub[atr].push_back(new_d);
 				}
 				else
-					cout << "Фрейм с введенным слотом, именем атрибута и значением не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 4:
@@ -990,7 +990,7 @@ void edit_slot(Model* model) {
 					cin.clear();
 					cin.sync();
 					if (i < 0 || i > 1)
-						cout << "Введено неверное значение, повторите попытку\n";
+						cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 				} while (i < 0 || i > 1);
 				if (i == 0)
 					b = false;
@@ -999,39 +999,39 @@ void edit_slot(Model* model) {
 				cout << "\n";
 				new_b = !b;
 				bo = model->frame[name].slot[slot].boo.find(atr);
-				if (bo->second == b) { // если найдено
+				if (bo->second == b) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].boo.erase(atr);
 					model->frame[name].slot[slot].boo.emplace(piecewise_construct, make_tuple(atr), make_tuple(new_b));
 				}
 				else
-					cout << "Фрейм с введенным слотом, именем атрибута и значением не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 
 			case 5:
-				cout << "Введите значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> link;
 				cin.clear();
 				cin.sync();
 
-				cout << "Введите значение атрибута string: ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° string: ";
 				cin >> new_s;
 				cin.clear();
 				cin.sync();
 
 				st = find(model->frame[name].slot[slot].link[atr].begin(), model->frame[name].slot[slot].link[atr].end(), s);
-				if (st != model->frame[name].slot[slot].link[atr].end()) { // если найдено
+				if (st != model->frame[name].slot[slot].link[atr].end()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ
 					model->frame[name].slot[slot].link[atr].erase(st);
 					model->frame[name].slot[slot].link[atr].push_back(new_s);
 				}
 				else
-					cout << "Фрейм с введенным слотом, именем атрибута и значением не найден\n\n";
+					cout << "Р¤СЂРµР№Рј СЃ РІРІРµРґРµРЅРЅС‹Рј СЃР»РѕС‚РѕРј, РёРјРµРЅРµРј Р°С‚СЂРёР±СѓС‚Р° Рё Р·РЅР°С‡РµРЅРёРµРј РЅРµ РЅР°Р№РґРµРЅ\n\n";
 				break;
 			}
 			break;
 		}
 	}
-	else // нет фреймов
-		cout << "В базе знаний нет фреймов\n\n";
+	else // РЅРµС‚ С„СЂРµР№РјРѕРІ
+		cout << "Р’ Р±Р°Р·Рµ Р·РЅР°РЅРёР№ РЅРµС‚ С„СЂРµР№РјРѕРІ\n\n";
 }
 
 void save_file(Model model) {
@@ -1039,28 +1039,28 @@ void save_file(Model model) {
 	ofstream file;
 	string filename;
 
-	cout << "Введите имя файла для сохранения базы знаний: ";
+	cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ Р±Р°Р·С‹ Р·РЅР°РЅРёР№: ";
 	cin >> filename;
 	cin.clear();
 	cin.sync();
 	file.open(filename, fstream::out);
 
-	// экземпляры
-	file << model.frame.size() << "\n"; // количество фреймов
-	for (auto i = model.frame.begin(); i != model.frame.end(); ++i) { // все фреймы (не прототипы)
-		file << i->first << "\n"; // имя фрейма
-		auto da = i->second.slot; // данные слота
-		file << da.size() << "\n"; // количество слотов
+	// СЌРєР·РµРјРїР»СЏСЂС‹
+	file << model.frame.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ С„СЂРµР№РјРѕРІ
+	for (auto i = model.frame.begin(); i != model.frame.end(); ++i) { // РІСЃРµ С„СЂРµР№РјС‹ (РЅРµ РїСЂРѕС‚РѕС‚РёРїС‹)
+		file << i->first << "\n"; // РёРјСЏ С„СЂРµР№РјР°
+		auto da = i->second.slot; // РґР°РЅРЅС‹Рµ СЃР»РѕС‚Р°
+		file << da.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ
 		for (auto it = da.begin(); it != da.end(); ++it) {
-			file << it->first << "\n"; // имя слота
-			auto dat = it->second; // данные слота
+			file << it->first << "\n"; // РёРјСЏ СЃР»РѕС‚Р°
+			auto dat = it->second; // РґР°РЅРЅС‹Рµ СЃР»РѕС‚Р°
 
 			//int
-			file << dat.integer.size() << "\n"; // количество атрибутов int
+			file << dat.integer.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.integer.begin(); ite != dat.integer.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
-				auto data = ite->second; // данные атрибутов
-				file << data.size() << "\n"; // количество значений атрибутов
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+				auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚РѕРІ
+				file << data.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№ Р°С‚СЂРёР±СѓС‚РѕРІ
 				for (auto iter = data.begin(); iter != data.end(); ++iter) {
 					file << *iter << " ";
 				}
@@ -1068,11 +1068,11 @@ void save_file(Model model) {
 			}
 
 			//string
-			file << dat.str.size() << "\n"; // количество атрибутов int
+			file << dat.str.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.str.begin(); ite != dat.str.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
-				auto data = ite->second; // данные атрибутов
-				file << data.size() << "\n"; // количество значений атрибутов
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+				auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚РѕРІ
+				file << data.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№ Р°С‚СЂРёР±СѓС‚РѕРІ
 				for (auto iter = data.begin(); iter != data.end(); ++iter) {
 					file << *iter << " ";
 				}
@@ -1080,11 +1080,11 @@ void save_file(Model model) {
 			}
 
 			//double
-			file << dat.doub.size() << "\n"; // количество атрибутов int
+			file << dat.doub.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.doub.begin(); ite != dat.doub.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
-				auto data = ite->second; // данные атрибутов
-				file << data.size() << "\n"; // количество значений атрибутов
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+				auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚РѕРІ
+				file << data.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№ Р°С‚СЂРёР±СѓС‚РѕРІ
 				for (auto iter = data.begin(); iter != data.end(); ++iter) {
 					file << *iter << " ";
 				}
@@ -1092,19 +1092,19 @@ void save_file(Model model) {
 			}
 
 			//bool
-			file << dat.boo.size() << "\n"; // количество атрибутов int
+			file << dat.boo.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.boo.begin(); ite != dat.boo.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
-				auto data = ite->second; // данные атрибутов
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+				auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚РѕРІ
 				file << data << "\n";
 			}
 
 			//link
-			file << dat.link.size() << "\n"; // количество атрибутов int
+			file << dat.link.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.link.begin(); ite != dat.link.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
-				auto data = ite->second; // данные атрибутов
-				file << data.size() << "\n"; // количество значений атрибутов
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+				auto data = ite->second; // РґР°РЅРЅС‹Рµ Р°С‚СЂРёР±СѓС‚РѕРІ
+				file << data.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№ Р°С‚СЂРёР±СѓС‚РѕРІ
 				for (auto iter = data.begin(); iter != data.end(); ++iter) {
 					file << *iter << " ";
 				}
@@ -1113,45 +1113,45 @@ void save_file(Model model) {
 		}
 	}
 
-	// прототипы
-	file << model.proto.size() << "\n"; // количество фреймов
+	// РїСЂРѕС‚РѕС‚РёРїС‹
+	file << model.proto.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ С„СЂРµР№РјРѕРІ
 	int _i  = 0;
-	for (auto i = model.proto.begin(); i != model.proto.end(); ++i) { // все фреймы (не прототипы)
-		file << _i++ << "\n"; // номер фрейма
-		auto da = i->second.slot; // данные слота
-		file << da.size() << "\n"; // количество слотов
+	for (auto i = model.proto.begin(); i != model.proto.end(); ++i) { // РІСЃРµ С„СЂРµР№РјС‹ (РЅРµ РїСЂРѕС‚РѕС‚РёРїС‹)
+		file << _i++ << "\n"; // РЅРѕРјРµСЂ С„СЂРµР№РјР°
+		auto da = i->second.slot; // РґР°РЅРЅС‹Рµ СЃР»РѕС‚Р°
+		file << da.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ
 		for (auto it = da.begin(); it != da.end(); ++it) {
-			file << it->first << "\n"; // имя слота
-			auto dat = it->second; // данные слота
+			file << it->first << "\n"; // РёРјСЏ СЃР»РѕС‚Р°
+			auto dat = it->second; // РґР°РЅРЅС‹Рµ СЃР»РѕС‚Р°
 
 			//int
-			file << dat.integer.size() << "\n"; // количество атрибутов int
+			file << dat.integer.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.integer.begin(); ite != dat.integer.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 			}
 
 			//string
-			file << dat.str.size() << "\n"; // количество атрибутов int
+			file << dat.str.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.str.begin(); ite != dat.str.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 			}
 
 			//double
-			file << dat.doub.size() << "\n"; // количество атрибутов int
+			file << dat.doub.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.doub.begin(); ite != dat.doub.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 			}
 
 			//bool
-			file << dat.boo.size() << "\n"; // количество атрибутов int
+			file << dat.boo.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.boo.begin(); ite != dat.boo.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 			}
 
 			//link
-			file << dat.link.size() << "\n"; // количество атрибутов int
+			file << dat.link.size() << "\n"; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ int
 			for (auto ite = dat.link.begin(); ite != dat.link.end(); ++ite) {
-				file << ite->first << "\n"; // имя атрибута
+				file << ite->first << "\n"; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 			}
 		}
 	}
@@ -1179,30 +1179,30 @@ void open_file(Model* model) {
 	int frame_count, slot_count, int_count, str_count, double_count, bool_count, link_count, data_count;
 	string frame_name, slot_name, atr_name;
 
-	cout << "Введите имя файла для открытия базы знаний: ";
+	cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ РѕС‚РєСЂС‹С‚РёСЏ Р±Р°Р·С‹ Р·РЅР°РЅРёР№: ";
 	cin >> filename;
 	cin.clear();
 	cin.sync();
 	file.open(filename, fstream::in);
 	if (file) {
 
-		// экземпляры //
+		// СЌРєР·РµРјРїР»СЏСЂС‹ //
 		file >> frame_count; 
 		file.get();
 		for (int i = 0; i < frame_count; i++) {
-			file >> frame_name; // имя фрейма
-			file >> slot_count; // количество слотов
+			file >> frame_name; // РёРјСЏ С„СЂРµР№РјР°
+			file >> slot_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ
 			file.get();
 			for (int k = 0; k < slot_count; k++) {
-				file >> slot_name; // имя слота
+				file >> slot_name; // РёРјСЏ СЃР»РѕС‚Р°
 
 				// int
-				file >> int_count; // кол-во атрибутов с int
+				file >> int_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ int
 				file.get();
 				if (int_count > 0) {
 					for (int j = 0; j < int_count; j++) {
-						file >> atr_name; // имя атрибута
-						file >> data_count; // количество значений
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+						file >> data_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№
 						file.get();
 						for (int z = 0; z < data_count; z++) {
 							file >> int_;
@@ -1215,12 +1215,12 @@ void open_file(Model* model) {
 				}
 
 				//string
-				file >> str_count; // кол-во атрибутов с string
+				file >> str_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (str_count > 0) {
 					for (int j = 0; j < str_count; j++) {
-						file >> atr_name; // имя атрибута
-						file >> data_count; // количество значений
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+						file >> data_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№
 						file.get();
 						for (int z = 0; z < data_count; z++) {
 							file >> s;
@@ -1232,12 +1232,12 @@ void open_file(Model* model) {
 				}
 
 				// double
-				file >> double_count; // кол-во атрибутов с string
+				file >> double_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (double_count > 0) {
 					for (int j = 0; j < double_count; j++) {
-						file >> atr_name; // имя атрибута
-						file >> data_count; // количество значений
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+						file >> data_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№
 						file.get();
 						for (int z = 0; z < data_count; z++) {
 							file >> d;
@@ -1250,11 +1250,11 @@ void open_file(Model* model) {
 				}
 
 				//bool
-				file >> bool_count; // кол-во атрибутов с string
+				file >> bool_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (bool_count > 0) {
 					for (int j = 0; j < bool_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						file >> int_;
 						file.get();
 						if (int_ == 0)
@@ -1266,12 +1266,12 @@ void open_file(Model* model) {
 				}
 
 				//link
-				file >> link_count; // кол-во атрибутов с string
+				file >> link_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (link_count > 0) {
 					for (int j = 0; j < link_count; j++) {
-						file >> atr_name; // имя атрибута
-						file >> data_count; // количество значений
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+						file >> data_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№
 						file.get();
 						for (int z = 0; z < data_count; z++) {
 							file >> s;
@@ -1293,66 +1293,66 @@ void open_file(Model* model) {
 			slot.slot.clear();
 		}
 
-		// прототипы //
+		// РїСЂРѕС‚РѕС‚РёРїС‹ //
 		int _i;
 		file >> frame_count;
 		file.get();
 		for (int i = 0; i < frame_count; i++) {
-			file >> _i; // номер фрейма
+			file >> _i; // РЅРѕРјРµСЂ С„СЂРµР№РјР°
 			file.get();
-			model->proto.emplace(piecewise_construct, make_tuple(_i), make_tuple()); // пустой фрейм
-			file >> slot_count; // количество слотов
+			model->proto.emplace(piecewise_construct, make_tuple(_i), make_tuple()); // РїСѓСЃС‚РѕР№ С„СЂРµР№Рј
+			file >> slot_count; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ
 			file.get();
 			for (int k = 0; k < slot_count; k++) {
-				file >> slot_name; // имя слота
-				model->proto[_i].slot.emplace(piecewise_construct, make_tuple(slot_name), make_tuple()); // пустой слот
+				file >> slot_name; // РёРјСЏ СЃР»РѕС‚Р°
+				model->proto[_i].slot.emplace(piecewise_construct, make_tuple(slot_name), make_tuple()); // РїСѓСЃС‚РѕР№ СЃР»РѕС‚
 
 				// int
-				file >> int_count; // кол-во атрибутов с int
+				file >> int_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ int
 				file.get();
 				if (int_count > 0) {
 					for (int j = 0; j < int_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						model->proto[_i].slot[slot_name].integer.emplace(piecewise_construct, make_tuple(atr_name), make_tuple());
 					}
 				}
 
 				//string
-				file >> str_count; // кол-во атрибутов с string
+				file >> str_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (str_count > 0) {
 					for (int j = 0; j < str_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						model->proto[_i].slot[slot_name].str.emplace(piecewise_construct, make_tuple(atr_name), make_tuple());
 					}
 				}
 
 				// double
-				file >> double_count; // кол-во атрибутов с string
+				file >> double_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ string
 				file.get();
 				if (double_count > 0) {
 					for (int j = 0; j < double_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						model->proto[_i].slot[slot_name].doub.emplace(piecewise_construct, make_tuple(atr_name), make_tuple());
 					}
 				}
 
 				//bool
-				file >> bool_count; // кол-во атрибутов с bool
+				file >> bool_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ bool
 				file.get();
 				if (bool_count > 0) {
 					for (int j = 0; j < bool_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						model->proto[_i].slot[slot_name].boo.emplace(piecewise_construct, make_tuple(atr_name), make_tuple());
 					}
 				}
 
 				//link
-				file >> link_count; // кол-во атрибутов с link
+				file >> link_count; // РєРѕР»-РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ СЃ link
 				file.get();
 				if (link_count > 0) {
 					for (int j = 0; j < link_count; j++) {
-						file >> atr_name; // имя атрибута
+						file >> atr_name; // РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
 						model->proto[_i].slot[slot_name].link.emplace(piecewise_construct, make_tuple(atr_name), make_tuple());
 					}
 				}
@@ -1364,7 +1364,7 @@ void open_file(Model* model) {
 
 	else {
 		file.close();
-		cout << "Файл не найден\n\n";
+		cout << "Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ\n\n";
 	}
 
 }
@@ -1387,7 +1387,7 @@ void sint_src(Model model, int type) {
 	bool not_found;
 	vector <sm_sl> sl;
 
-	cout << "Введите количество слотов: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ: ";
 	cin >> slot_count;
 	cin.get();
 	cin.clear();
@@ -1396,12 +1396,12 @@ void sint_src(Model model, int type) {
 	sl.resize(slot_count);
 
 	for (auto i = 0; i < slot_count; i++) {
-		cout << "Введите имя слота: ";
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ СЃР»РѕС‚Р°: ";
 		cin >> name;
 		cin.clear();
 		cin.sync();
 		sl[i].name = name;
-		cout << "Введите количество атрибутов в слоте №" << i+1 << ": ";
+		cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ РІ СЃР»РѕС‚Рµ в„–" << i+1 << ": ";
 		cin >> atr_count;
 		cin.get();
 		cin.clear();
@@ -1409,19 +1409,19 @@ void sint_src(Model model, int type) {
 		sl[i].atr.resize(atr_count);
 
 		for (auto j = 0; j < atr_count; j++) {
-			cout << "Введите имя атрибута: ";
+			cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°: ";
 			cin >> name;
 			cin.clear();
 			cin.sync();
 			sl[i].atr[j].name = name;
 			do {
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка, 6 - неизвестный тип): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°, 6 - РЅРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї): ";
 				cin >> tmp;
 				cin.get();
 				cin.clear();
 				cin.sync();
 				if (tmp <= 0 || tmp >= 7)
-					cout << "Введено неверное значение, повторите попытку\n";
+					cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 			} while (tmp <= 0 || tmp >=7);
 			sl[i].atr[j].type = tmp;
 		}
@@ -1431,20 +1431,20 @@ void sint_src(Model model, int type) {
 
 	for (auto it = model.frame.begin(); it != model.frame.end(); ++it) {
 
-		if (type == 0) { // Все подходящее
+		if (type == 0) { // Р’СЃРµ РїРѕРґС…РѕРґСЏС‰РµРµ
 			if (it->second.slot.size() >= slot_count) {
 				not_found = false;
 				for (auto iter = sl.begin(); iter != sl.end(); ++iter) {
 					auto data = *iter;
 					auto fnd = it->second.slot.find(data.name);
-					if (fnd != it->second.slot.end()) { // если нашло
+					if (fnd != it->second.slot.end()) { // РµСЃР»Рё РЅР°С€Р»Рѕ
 						if (Atrib_size(fnd->second) >= data.atr.size()) {
 							for (auto k = 0; k < data.atr.size(); k++) {
-								not_found = find_Atrib(fnd->second, data.atr[k].name, data.atr[k].type);  // если не нашло true
+								not_found = find_Atrib(fnd->second, data.atr[k].name, data.atr[k].type);  // РµСЃР»Рё РЅРµ РЅР°С€Р»Рѕ true
 							}
 						} 
 					}
-					else // не нашло слота во фрейме
+					else // РЅРµ РЅР°С€Р»Рѕ СЃР»РѕС‚Р° РІРѕ С„СЂРµР№РјРµ
 						not_found = true;
 				} 
 				if (not_found == false) {
@@ -1453,20 +1453,20 @@ void sint_src(Model model, int type) {
 			}
 		}
 
-		if (type == 1) { // ничего лишнего
+		if (type == 1) { // РЅРёС‡РµРіРѕ Р»РёС€РЅРµРіРѕ
 			if (it->second.slot.size() == slot_count) {
 				not_found = false;
 				for (auto iter = sl.begin(); iter != sl.end(); ++iter) {
 					auto data = *iter;
 					auto fnd = it->second.slot.find(data.name);
-					if (fnd != it->second.slot.end()) { // если нашло
+					if (fnd != it->second.slot.end()) { // РµСЃР»Рё РЅР°С€Р»Рѕ
 						if (Atrib_size(fnd->second) == data.atr.size()) {
 							for (auto k = 0; k < data.atr.size(); k++) {
-								not_found = find_Atrib(fnd->second, data.atr[k].name, data.atr[k].type);  // если не нашло true
+								not_found = find_Atrib(fnd->second, data.atr[k].name, data.atr[k].type);  // РµСЃР»Рё РЅРµ РЅР°С€Р»Рѕ true
 							}
 						}
 					}
-					else // не нашло слота во фрейме
+					else // РЅРµ РЅР°С€Р»Рѕ СЃР»РѕС‚Р° РІРѕ С„СЂРµР№РјРµ
 						not_found = true;
 				}
 				if (not_found == false) {
@@ -1492,7 +1492,7 @@ void sem_src(Model model, int type) {
 	string s;
 	bool b;
 
-	cout << "Введите количество слотов: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ: ";
 	cin >> slot_count;
 	cin.get();
 	cin.clear();
@@ -1502,7 +1502,7 @@ void sem_src(Model model, int type) {
 	atr_found.resize(slot_count);
 
 	for (auto i = 0; i < slot_count; i++) {
-		cout << "Введите количество атрибутов в слоте №" << i + 1 << ": ";
+		cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚СЂРёР±СѓС‚РѕРІ РІ СЃР»РѕС‚Рµ в„–" << i + 1 << ": ";
 		cin >> atr_count;
 		cin.get();
 		cin.clear();
@@ -1513,20 +1513,20 @@ void sem_src(Model model, int type) {
 		for (auto j = 0; j < atr_count; j++) {
 
 			do {
-				cout << "Введите тип значения атрибута (1 - целое число, 2 - строка, 3 - вещественное число, 4 - булево значение, 5 - ссылка): ";
+				cout << "Р’РІРµРґРёС‚Рµ С‚РёРї Р·РЅР°С‡РµРЅРёСЏ Р°С‚СЂРёР±СѓС‚Р° (1 - С†РµР»РѕРµ С‡РёСЃР»Рѕ, 2 - СЃС‚СЂРѕРєР°, 3 - РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ, 4 - Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, 5 - СЃСЃС‹Р»РєР°): ";
 				cin >> tmp;
 				cin.get();
 				cin.clear();
 				cin.sync();
 				if (tmp <= 0 || tmp >= 6)
-					cout << "Введено неверное значение, повторите попытку\n";
+					cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 			} while (tmp <= 0 || tmp >= 6);
 			
 			sl[i].atr[j].type = tmp;
 
 			if (tmp != 4) {
 				do {
-					cout << "Введите количество значений: ";
+					cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№: ";
 					cin >> var_count;
 					cin.get();
 					cin.clear();
@@ -1542,7 +1542,7 @@ void sem_src(Model model, int type) {
 			for (auto m = 0; m < var_count; m++) {
 				atr_found[i][j][m] = false;
 				name = to_string(m);
-				cout << "Введите значение %" << m+1 << ": ";
+				cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ %" << m+1 << ": ";
 
 				switch (tmp) {
 
@@ -1583,7 +1583,7 @@ void sem_src(Model model, int type) {
 						cin.clear();
 						cin.sync();
 						if (_int < 0 || _int > 1)
-							cout << "Введено неверное значение, повторите попытку\n";
+							cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ\n";
 					} while (_int < 0 || _int > 1);
 					if (_int == 0)
 						b = false;
@@ -1612,14 +1612,14 @@ void sem_src(Model model, int type) {
 	int z;
 
 	
-	for (auto it = model.frame.begin(); it != model.frame.end(); ++it) { // перебор всех фреймов
+	for (auto it = model.frame.begin(); it != model.frame.end(); ++it) { // РїРµСЂРµР±РѕСЂ РІСЃРµС… С„СЂРµР№РјРѕРІ
 		show = true;
-		if (type == 0) { // Все подходящее
+		if (type == 0) { // Р’СЃРµ РїРѕРґС…РѕРґСЏС‰РµРµ
 			if (it->second.slot.size() >= slot_count) {
 				for (auto ite = model.frame[it->first].slot.begin(); ite != model.frame[it->first].slot.end(); ++ite) {
 					auto data = ite->second;
-					for (int k = 0; k < slot_count; k++) { // проверка каждого слота из прототипа
-						for (int n = 0; n < sl[k].atr.size(); n++) { // проверка каждого атрибута прототипа
+					for (int k = 0; k < slot_count; k++) { // РїСЂРѕРІРµСЂРєР° РєР°Р¶РґРѕРіРѕ СЃР»РѕС‚Р° РёР· РїСЂРѕС‚РѕС‚РёРїР°
+						for (int n = 0; n < sl[k].atr.size(); n++) { // РїСЂРѕРІРµСЂРєР° РєР°Р¶РґРѕРіРѕ Р°С‚СЂРёР±СѓС‚Р° РїСЂРѕС‚РѕС‚РёРїР°
 							switch (tmp) {
 
 							case 1:
@@ -1628,8 +1628,8 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.integer.begin(); lk != data.integer.end(); ++lk) {
 										if (data.integer[lk->first].size() >= sl[k].atr[n].a.integer[name].size()) {
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.integer[name].begin(); iter != sl[k].atr[n].a.integer[name].end(); ++iter) { // перебор значений вектора значений 
-												if (find(data.integer[lk->first].begin(), data.integer[lk->first].end(), *iter) != data.integer[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если !=, то нашло
+											for (auto iter = sl[k].atr[n].a.integer[name].begin(); iter != sl[k].atr[n].a.integer[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
+												if (find(data.integer[lk->first].begin(), data.integer[lk->first].end(), *iter) != data.integer[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё !=, С‚Рѕ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1645,8 +1645,8 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.str.begin(); lk != data.str.end(); ++lk) {
 										if (data.str[lk->first].size() >= sl[k].atr[n].a.str[name].size()) {
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.str[name].begin(); iter != sl[k].atr[n].a.str[name].end(); ++iter) { // перебор значений вектора значений 
-												if (find(data.str[lk->first].begin(), data.str[lk->first].end(), *iter) != data.str[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если !=, то нашло
+											for (auto iter = sl[k].atr[n].a.str[name].begin(); iter != sl[k].atr[n].a.str[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
+												if (find(data.str[lk->first].begin(), data.str[lk->first].end(), *iter) != data.str[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё !=, С‚Рѕ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1662,8 +1662,8 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.doub.begin(); lk != data.doub.end(); ++lk) {
 										if (data.doub[lk->first].size() >= sl[k].atr[n].a.doub[name].size()) { // 
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.doub[name].begin(); iter != sl[k].atr[n].a.doub[name].end(); ++iter) { // перебор значений вектора значений 
-												if (find(data.doub[lk->first].begin(), data.doub[lk->first].end(), *iter) != data.doub[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если !=, то нашло
+											for (auto iter = sl[k].atr[n].a.doub[name].begin(); iter != sl[k].atr[n].a.doub[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
+												if (find(data.doub[lk->first].begin(), data.doub[lk->first].end(), *iter) != data.doub[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё !=, С‚Рѕ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1678,7 +1678,7 @@ void sem_src(Model model, int type) {
 									name = as->first;
 									z = 0;
 									for (auto lk = data.boo.begin(); lk != data.boo.end(); ++lk) {
-										if (data.boo[lk->first] == sl[k].atr[n].a.boo[name]) { // поиск значения в слоте фрейма согласно типу, если !=, то нашло
+										if (data.boo[lk->first] == sl[k].atr[n].a.boo[name]) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё !=, С‚Рѕ РЅР°С€Р»Рѕ
 											atr_found[k][n][z] = true;
 										}
 									}
@@ -1691,8 +1691,8 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.link.begin(); lk != data.link.end(); ++lk) {
 										if (data.link[lk->first].size() == sl[k].atr[n].a.link[name].size()) { 
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.link[name].begin(); iter != sl[k].atr[n].a.link[name].end(); ++iter) { // перебор значений вектора значений 
-												if (find(data.link[lk->first].begin(), data.link[lk->first].end(), *iter) != data.link[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если ==, то не нашло
+											for (auto iter = sl[k].atr[n].a.link[name].begin(); iter != sl[k].atr[n].a.link[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
+												if (find(data.link[lk->first].begin(), data.link[lk->first].end(), *iter) != data.link[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё ==, С‚Рѕ РЅРµ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1709,12 +1709,12 @@ void sem_src(Model model, int type) {
 			}
 		}
 
-		if (type == 1) { // ничего лишнего
+		if (type == 1) { // РЅРёС‡РµРіРѕ Р»РёС€РЅРµРіРѕ
 			if (it->second.slot.size() == slot_count) {
 				for (auto ite = model.frame[it->first].slot.begin(); ite != model.frame[it->first].slot.end(); ++ite) {
 					auto data = ite->second;
-					for (int k = 0; k < slot_count; k++) { // проверка каждого слота из прототипа
-						for (int n = 0; n < sl[k].atr.size(); n++) { // проверка каждого атрибута прототипа
+					for (int k = 0; k < slot_count; k++) { // РїСЂРѕРІРµСЂРєР° РєР°Р¶РґРѕРіРѕ СЃР»РѕС‚Р° РёР· РїСЂРѕС‚РѕС‚РёРїР°
+						for (int n = 0; n < sl[k].atr.size(); n++) { // РїСЂРѕРІРµСЂРєР° РєР°Р¶РґРѕРіРѕ Р°С‚СЂРёР±СѓС‚Р° РїСЂРѕС‚РѕС‚РёРїР°
 							tmp = sl[k].atr[n].type;
 							name = sl[k].atr[n].name;
 							switch (tmp) {
@@ -1725,9 +1725,9 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.integer.begin(); lk != data.integer.end(); ++lk) {
 										if (data.integer[lk->first].size() == sl[k].atr[n].a.integer[name].size()) {
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.integer[name].begin(); iter != sl[k].atr[n].a.integer[name].end(); ++iter) { // перебор значений вектора значений 
+											for (auto iter = sl[k].atr[n].a.integer[name].begin(); iter != sl[k].atr[n].a.integer[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
 												z = 0;
-												if (find(data.integer[lk->first].begin(), data.integer[lk->first].end(), *iter) != data.integer[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если !=, то нашло
+												if (find(data.integer[lk->first].begin(), data.integer[lk->first].end(), *iter) != data.integer[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё !=, С‚Рѕ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1743,8 +1743,8 @@ void sem_src(Model model, int type) {
 									for (auto lk = data.str.begin(); lk != data.str.end(); ++lk) {
 										if (data.str[lk->first].size() == sl[k].atr[n].a.str[name].size()) {
 											z = 0;
-											for (auto iter = sl[k].atr[n].a.str[name].begin(); iter != sl[k].atr[n].a.str[name].end(); ++iter) { // перебор значений вектора значений 
-												if (find(data.str[lk->first].begin(), data.str[lk->first].end(), *iter) != data.str[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если ==, то не нашло
+											for (auto iter = sl[k].atr[n].a.str[name].begin(); iter != sl[k].atr[n].a.str[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
+												if (find(data.str[lk->first].begin(), data.str[lk->first].end(), *iter) != data.str[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё ==, С‚Рѕ РЅРµ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1758,10 +1758,10 @@ void sem_src(Model model, int type) {
 								for (auto as = sl[k].atr[n].a.doub.begin(); as != sl[k].atr[n].a.doub.end(); ++as) {
 									name = as->first;
 									for (auto lk = data.doub.begin(); lk != data.doub.end(); ++lk) {
-										if (data.doub[lk->first].size() == sl[k].atr[n].a.doub[name].size()) { // если найдено имя атрибута
-											for (auto iter = sl[k].atr[n].a.doub[name].begin(); iter != sl[k].atr[n].a.doub[name].end(); ++iter) { // перебор значений вектора значений 
+										if (data.doub[lk->first].size() == sl[k].atr[n].a.doub[name].size()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+											for (auto iter = sl[k].atr[n].a.doub[name].begin(); iter != sl[k].atr[n].a.doub[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
 												z = 0;
-												if (find(data.doub[lk->first].begin(), data.doub[lk->first].end(), *iter) != data.doub[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если ==, то не нашло
+												if (find(data.doub[lk->first].begin(), data.doub[lk->first].end(), *iter) != data.doub[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё ==, С‚Рѕ РЅРµ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1775,7 +1775,7 @@ void sem_src(Model model, int type) {
 								for (auto as = sl[k].atr[n].a.boo.begin(); as != sl[k].atr[n].a.boo.end(); ++as) {
 									name = as->first;
 									for (auto lk = data.boo.begin(); lk != data.boo.end(); ++lk) {
-										if (data.boo[lk->first] == sl[k].atr[n].a.boo[name]) { // поиск значения в слоте фрейма согласно типу, если ==, то не нашло
+										if (data.boo[lk->first] == sl[k].atr[n].a.boo[name]) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё ==, С‚Рѕ РЅРµ РЅР°С€Р»Рѕ
 											atr_found[k][n][0] = true;
 										}
 									}
@@ -1786,10 +1786,10 @@ void sem_src(Model model, int type) {
 								for (auto as = sl[k].atr[n].a.link.begin(); as != sl[k].atr[n].a.link.end(); ++as) {
 									name = as->first;
 									for (auto lk = data.link.begin(); lk != data.link.end(); ++lk) {
-										if (data.link[lk->first].size() == sl[k].atr[n].a.link[name].size()) { // если найдено имя атрибута
-											for (auto iter = sl[k].atr[n].a.link[name].begin(); iter != sl[k].atr[n].a.link[name].end(); ++iter) { // перебор значений вектора значений 
+										if (data.link[lk->first].size() == sl[k].atr[n].a.link[name].size()) { // РµСЃР»Рё РЅР°Р№РґРµРЅРѕ РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°
+											for (auto iter = sl[k].atr[n].a.link[name].begin(); iter != sl[k].atr[n].a.link[name].end(); ++iter) { // РїРµСЂРµР±РѕСЂ Р·РЅР°С‡РµРЅРёР№ РІРµРєС‚РѕСЂР° Р·РЅР°С‡РµРЅРёР№ 
 												z = 0;
-												if (find(data.link[lk->first].begin(), data.link[lk->first].end(), *iter) != data.link[lk->first].end()) { // поиск значения в слоте фрейма согласно типу, если ==, то не нашло
+												if (find(data.link[lk->first].begin(), data.link[lk->first].end(), *iter) != data.link[lk->first].end()) { // РїРѕРёСЃРє Р·РЅР°С‡РµРЅРёСЏ РІ СЃР»РѕС‚Рµ С„СЂРµР№РјР° СЃРѕРіР»Р°СЃРЅРѕ С‚РёРїСѓ, РµСЃР»Рё ==, С‚Рѕ РЅРµ РЅР°С€Р»Рѕ
 													atr_found[k][n][z] = true;
 												}
 												z++;
@@ -1832,16 +1832,16 @@ void search(Model model) {
 
 	do {
 		end = false;
-		cout << "1) Синтаксический поиск (""Все подходящее"")\n";
-		cout << "2) Синтаксический поиск (""Ничего лишнего"")\n";
-		cout << "3) Семантический поиск (""Все подходящее"")\n";
-		cout << "4) Семантический поиск (""Ничего лишнего"")\n";
-		cout << "Номер команды: ";
+		cout << "1) РЎРёРЅС‚Р°РєСЃРёС‡РµСЃРєРёР№ РїРѕРёСЃРє (""Р’СЃРµ РїРѕРґС…РѕРґСЏС‰РµРµ"")\n";
+		cout << "2) РЎРёРЅС‚Р°РєСЃРёС‡РµСЃРєРёР№ РїРѕРёСЃРє (""РќРёС‡РµРіРѕ Р»РёС€РЅРµРіРѕ"")\n";
+		cout << "3) РЎРµРјР°РЅС‚РёС‡РµСЃРєРёР№ РїРѕРёСЃРє (""Р’СЃРµ РїРѕРґС…РѕРґСЏС‰РµРµ"")\n";
+		cout << "4) РЎРµРјР°РЅС‚РёС‡РµСЃРєРёР№ РїРѕРёСЃРє (""РќРёС‡РµРіРѕ Р»РёС€РЅРµРіРѕ"")\n";
+		cout << "РќРѕРјРµСЂ РєРѕРјР°РЅРґС‹: ";
 		cin >> cmd;
 		cin.clear();
 		cin.sync();
 		if (cmd <= 0 || cmd >= 5)
-			cout << "Введена неизвестная команда, повторите ввод\n";
+			cout << "Р’РІРµРґРµРЅР° РЅРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјР°РЅРґР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n";
 		else
 			end = true;
 
@@ -1877,18 +1877,18 @@ void show_model(Model model) {
 		cout << "---------------------------------------------------------------------------------------------------------------\n";
 	}
 	else
-		cout << "База знаний пуста\n\n";
+		cout << "Р‘Р°Р·Р° Р·РЅР°РЅРёР№ РїСѓСЃС‚Р°\n\n";
 
 	if (model.proto.size() > 0) {
 		int _j = 0;
 		for (auto j = model.proto.begin(); j != model.proto.end(); ++j) {
-			cout << "Прототип №";
+			cout << "РџСЂРѕС‚РѕС‚РёРї в„–";
 			show_one_frame(model, "", _j++);
 		}
 		cout << "\n";
 	}
 	else
-		cout << "\nНет фреймов прототипов\n\n";
+		cout << "\nРќРµС‚ С„СЂРµР№РјРѕРІ РїСЂРѕС‚РѕС‚РёРїРѕРІ\n\n";
 }
 
 int main() {
@@ -1900,18 +1900,18 @@ int main() {
 	system("chcp 1251 >> null");
 	setlocale(LC_ALL, "ru");
 	do {
-		cout << "1)Добавление фрейма\n";
-		cout << "2)Удаление фрейма\n";
-		cout << "3)Редактирование фрейма\n";
-		cout << "4)Добавление слота\n";
-		cout << "5)Удаление данных слота\n";
-		cout << "6)Редактирование данных слота\n";
-		cout << "7)Сохранение модели в файл\n";
-		cout << "8)Открытие модели из файла\n";
-		cout << "9)Поиск\n";
-		cout << "10)Просмотреть фреймы\n";
-		cout << "11)Выход\n";
-		cout << "Введите номер команды: ";
+		cout << "1)Р”РѕР±Р°РІР»РµРЅРёРµ С„СЂРµР№РјР°\n";
+		cout << "2)РЈРґР°Р»РµРЅРёРµ С„СЂРµР№РјР°\n";
+		cout << "3)Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С„СЂРµР№РјР°\n";
+		cout << "4)Р”РѕР±Р°РІР»РµРЅРёРµ СЃР»РѕС‚Р°\n";
+		cout << "5)РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅС‹С… СЃР»РѕС‚Р°\n";
+		cout << "6)Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С… СЃР»РѕС‚Р°\n";
+		cout << "7)РЎРѕС…СЂР°РЅРµРЅРёРµ РјРѕРґРµР»Рё РІ С„Р°Р№Р»\n";
+		cout << "8)РћС‚РєСЂС‹С‚РёРµ РјРѕРґРµР»Рё РёР· С„Р°Р№Р»Р°\n";
+		cout << "9)РџРѕРёСЃРє\n";
+		cout << "10)РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ С„СЂРµР№РјС‹\n";
+		cout << "11)Р’С‹С…РѕРґ\n";
+		cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РєРѕРјР°РЅРґС‹: ";
 		cin >> cmd;
 		cin.get();
 		cin.clear();
@@ -1964,7 +1964,7 @@ int main() {
 			break;
 
 		default:
-			cout << "Введена неизвестная команда, повторите ввод\n\n";
+			cout << "Р’РІРµРґРµРЅР° РЅРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјР°РЅРґР°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ\n\n";
 			break;
 		}
 	} while (end == false);
